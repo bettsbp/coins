@@ -12,25 +12,28 @@ class Amount
   end
 
   def get_coins
-    new_amount = self.get_cents
-    qtrs = 0
-    totalArray = []
-    if new_amount >= 25
-      qtrs = (new_amount / 25).floor
-      left_over_after_qtrs = new_amount % 25
-    elsif new_amount < 25
-      if left_over_after_qtrs >= 10
-        dimes = (left_over_after_qtrs / 10).floor
-        left_over_after_dimes = left_over_after_qtrs % 10
+    new_amount = @amount * 100
+    qtr = 0
+    dime = 0
+    nickel = 0
+    penny = 0
+    coins = []
+    until (new_amount <= 0)
+      if new_amount >= 25
+        new_amount -= 25
+        qtr += 1
+      elsif new_amount >= 10
+        new_amount -= 10
+        dime += 1
+      elsif new_amount >= 5
+        new_amount -= 5
+        nickel += 1
+      elsif new_amount >= 1
+        new_amount -= 1
+        penny += 1
       end
     end
-    totalArray.push(qtrs)
-    totalArray.push(dimes)
-  end
-
-  def add_coins
-    finalArray = []
-    finalArray.push(@qtr)
-    finalArray.push(@dimes)
+    puts qtr.to_s + " quarters, " + dime.to_s + " dimes, " + nickel.to_s + " nickels, " + penny.to_s + " pennies."
+    qtr.to_s + " quarters, " + dime.to_s + " dimes, " + nickel.to_s + " nickels, " + penny.to_s + " pennies."
   end
 end
