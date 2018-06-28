@@ -39,10 +39,9 @@ class Amount
 end
 
 print "Enter an amount of money in $: "
-number = gets.chomp.to_i
+number = gets.chomp.to_f
 new_amount = Amount.new(number)
 puts "Processing..."
 final = new_amount.get_coins
-puts `clear`
 puts "Here is your number in coins: "
 puts final
