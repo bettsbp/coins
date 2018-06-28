@@ -37,3 +37,12 @@ class Amount
     qtr.to_s + " quarters, " + dime.to_s + " dimes, " + nickel.to_s + " nickels, " + penny.to_s + " pennies."
   end
 end
+
+print "Enter an amount of money in $: "
+number = gets.chomp.to_i
+new_amount = Amount.new(number)
+puts "Processing..."
+final = new_amount.get_coins
+puts `clear`
+puts "Here is your number in coins: "
+puts final
